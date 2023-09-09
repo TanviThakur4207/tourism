@@ -48,9 +48,9 @@ const SearchRide = () => {
     }
 
     return (
-        <div className="p-4 flex flex-wrap justify-center gap-2  bg-#d1e5e5-200 rounded-[4rem] shadow-md" id="search_ride">
+        <div className="p-4 flex flex-wrap justify-center gap-2 shadow-md" id="search_ride" style={{ backgroundImage: 'url("sky.jpeg")' }}>
             <div className="mb-4">
-                <label htmlFor="from" className="block text-gray-700 font-bold mb-2">
+                <label htmlFor="from" className="block text-white font-bold mb-2">
                     From:
                 </label>
                 <div className="card flex justify-content-center">
@@ -58,7 +58,7 @@ const SearchRide = () => {
                 </div>
             </div>
             <div className="mb-4">
-                <label htmlFor="to" className="block text-gray-700 font-bold mb-2">
+                <label htmlFor="to" className="block text-white font-bold mb-2">
                     To:
                 </label>
                 <div className="card flex justify-content-center">
@@ -66,7 +66,7 @@ const SearchRide = () => {
                 </div>
             </div>
             <div className="mb-4">
-                <label htmlFor="date" className="block text-gray-700 font-bold mb-2">
+                <label htmlFor="date" className="block text-white font-bold mb-2">
                     Date:
                 </label>
                 <div className="card flex justify-content-center h-[50%]">

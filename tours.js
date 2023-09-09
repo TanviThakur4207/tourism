@@ -3,6 +3,8 @@ const tourData = [
     {
       source: "City A",
       destination: "Beach",
+      price : 10,
+      car_Photo : "photo.jpg",
     },
     {
       source: "Mountain",

@@ -7,6 +7,8 @@ const rides = () => {
     
     return (
         <>
+        <div style={{ backgroundImage: 'url("sky.jpeg")'}}>
+
             <SearchRide />
             <div className='flex gap-[1rem] flex-wrap justify-around m-[2rem]'>
                 <CarCard />
@@ -16,6 +18,7 @@ const rides = () => {
                 <CarCard />
                 <CarCard />
             </div>
+        </div>
         </>
     )
 }

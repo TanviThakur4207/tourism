@@ -19,7 +19,7 @@
 
 
 body {
-  background-color: #d1e5e5;
+  background-color: white;
   overflow-x: hidden;   
 }
 .p-button-icon-only {
@@ -30,4 +30,8 @@ body {
 }
 .p-carousel-prev {
   display: none;
+}
+.p-carousel-item img{
+  width: 100%; /* Set your desired width */
+  height: 100vh; /* Set your desired height */
 }

@@ -1,7 +1,16 @@
 import React, { useState } from 'react'
 import { InputMask } from "primereact/inputmask";
+import axios from 'axios';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const CarCard = () => {
+    const searchParams = useSearchParams();
+    const router = useRouter();
+    const source = searchParams.get('source')
+    const destination = searchParams.get('destination')
+    const date =  searchParams.get('date')
+    // const { userId } = router.query;
+
     const [isPopupOpen, setPopupOpen] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
 
@@ -9,6 +18,9 @@ const CarCard = () => {
         name: "",
         phoneNumber: '',
         desc: '',
+        source: '',
+        destination: '',
+        date: '',
     })
     const handleChange = (e: any) => {
         const { name, value } = e.target;
@@ -19,32 +31,29 @@ const CarCard = () => {
     };
 
     const handleSubmit = async () => {
-
+        formData.source = source
+        formData.destination = destination
+        formData.date = new Date(Number(date)).toLocaleDateString()
         try {
-            //   const response = await fetch('/send-email', {
-            //     method: 'POST',
-            //     headers: {
-            //       'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(data),
-            //   });
-
-            //   const responseData = await response.json();
-            //   console.log(responseData.message); // Log the server response
-
-            // Show success message and close popup
-            setPopupOpen(false);
+            const response = await axios.post("/api/ride_enquiry", formData);
+            if (response.status === 200) {
             setSuccessMessage('Enquiry sent successfully'); // Add this line
+            } else {
+            console.error('Email sending failed.');
+            }
+            setPopupOpen(false);
+
         } catch (error) {
             console.error('Error sending email:', error);
             // Handle error if needed
         }
+        router.push(`/rides?source=City%20A&destination=Beach&date=1692090387967`);
     };
 
 
     return (
 
-        <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow bg-green-100 dark:border-white-700">
+        <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-white dark:border-white-700" >
             <a href="#">
                 <img className="pl-[5rem] max-w-[80%] rounded-t-lg" src="carimage.png" alt="product image" />
             </a>
@@ -79,89 +88,84 @@ const CarCard = () => {
                         <div className="absolute inset-0 backdrop-blur-lg"></div>
                         <div className="bg-white w-full max-w-md p-6 rounded-lg shadow-md relative">
                             {/* Add your popup form here */}
-                            <form onSubmit={handleSubmit}>
-                                {/* Name input */}
-                                <div className="mb-4">
-                                    <label htmlFor="name" className="block text-gray-700 dark:text-gray-700 text-sm font-bold mb-1">
-                                        Name
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        required
-                                        className="block w-full border rounded-md py-2 px-3 focus:ring-blue-300 focus:border-blue-300"
-                                    />
-                                </div>
-                                <div className="mb-4">
-                                    <label htmlFor="name" className="block text-gray-700 dark:text-gray-700 text-sm font-bold mb-1">
-                                        Phone
-                                    </label>
-                                    <InputMask
-                                        id="phoneNumber"
-                                        name="phoneNumber"
-                                        value={formData.phoneNumber.replace("+91", "")}
-                                        onChange={handleChange}
-                                        mask="99999-99999"
-                                        placeholder="99999-99999"
-                                        required
-                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    />
-                                </div>
-                                <div className="mb-4">
+                            {/* Name input */}
+                            <div className="mb-4">
+                                <label htmlFor="name" className="block text-gray-700 dark:text-gray-700 text-sm font-bold mb-1">
+                                    Name
+                                </label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                    className="block w-full border rounded-md py-2 px-3 focus:ring-blue-300 focus:border-blue-300"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="name" className="block text-gray-700 dark:text-gray-700 text-sm font-bold mb-1">
+                                    Phone
+                                </label>
+                                <InputMask
+                                    id="phoneNumber"
+                                    name="phoneNumber"
+                                    value={formData.phoneNumber.replace("+91", "")}
+                                    onChange={handleChange}
+                                    mask="99999-99999"
+                                    placeholder="99999-99999"
+                                    required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                />
+                            </div>
+                            <div className="mb-4">
 
-                                    <label htmlFor="desc" className="block text-gray-700 text-sm font-bold mb-2">
-                                        Description
-                                    </label>
-                                    <textarea
-                                        id="desc"
-                                        name="desc"
-                                        value={formData.desc}
-                                        onChange={handleChange}
-                                        required
-                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        rows={4}
-                                    />
+                                <label htmlFor="desc" className="block text-gray-700 text-sm font-bold mb-2">
+                                    Description
+                                </label>
+                                <textarea
+                                    id="desc"
+                                    name="desc"
+                                    value={formData.desc}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    rows={4}
+                                />
+                            </div>
+                            {/* Phone Number input */}
+                            {/* Add other inputs here */}
+                            {/* Send button */}
+                            <button
+                                type="submit"
+                                onClick={() => handleSubmit()}
+                                className="w-full bg-blue-700 text-white py-2 rounded-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                            >
+                                Send
+                            </button>
+                            <button
+                                onClick={() => setPopupOpen(false)}
+                                className="absolute top-2 right-2 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200 focus:outline-none"
+                            >
+                                <svg
+                                    className="w-5 h-5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M6 18L18 6M6 6l12 12"
+                                    ></path>
+                                </svg>
+                            </button>
+                            {successMessage && (
+                                <div className="bg-green-200 text-green-800 p-2 mt-4 rounded" >
+                                    {successMessage}
                                 </div>
-                                {/* Phone Number input */}
-                                {/* Add other inputs here */}
-                                {/* Send button */}
-                                <button
-                                    type="submit"
-                                    onClick={() => {
-                                        setPopupOpen(false);
-                                    }}
-                                    className="w-full bg-blue-700 text-white py-2 rounded-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
-                                >
-                                    Send
-                                </button>
-                                <button
-                                    onClick={() => setPopupOpen(false)}
-                                    className="absolute top-2 right-2 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200 focus:outline-none"
-                                >
-                                    <svg
-                                        className="w-5 h-5"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M6 18L18 6M6 6l12 12"
-                                        ></path>
-                                    </svg>
-                                </button>
-                                {successMessage && (
-                                    <div className="bg-green-200 text-green-800 p-2 mt-4 rounded">
-                                        {successMessage}
-                                    </div>
-                                )}
-                            </form>
+                            )}
                         </div>
                     </div>
                 )}

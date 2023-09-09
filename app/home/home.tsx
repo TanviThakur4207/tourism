@@ -5,6 +5,7 @@ import { Image } from 'primereact/image';
 import AboutUs from '@/components/about';
 import ContactUs from '@/components/contactus';
 import SearchRide from '@/components/seachride';
+import Navbar from '@/components/navbar';
 interface Photo {
     source: string;
     alt: string;
@@ -14,9 +15,9 @@ const Home = () => {
 
     const [photos, setPhotos] = useState<Photo[]>([
         // Replace these URLs with your own image URLs
-        { source: 'https://www.outlookindia.com/outlooktraveller/public/uploads/files/2015/03/110316124504-shimla3carousel.jpg', alt: 'Image 1' },
-        { source: 'https://media.istockphoto.com/id/1182935983/photo/beautiful-shimla-himachal-pradesh.jpg?s=612x612&w=0&k=20&c=GCEzzGhFGIK8I4Tb6jkImaO6sQ7p6HN4oIpCUJ6s8AU=', alt: 'Image 2' },
-        { source: 'https://www.vibrillhospitality.com/images/resort-upper-carousel-images/snow-shimla-2.jpg', alt: 'Image 3' },
+        { source: 'crousal_photos/photo1.jpg', alt: 'Image 1' },
+        { source: 'crousal_photos/photo2.jpg', alt: 'Image 2' },
+        { source: 'crousal_photos/photo3.jpg', alt: 'Image 3' },
     ]);
 
 
@@ -33,10 +34,13 @@ const Home = () => {
     };
     return (
         <>
-            <div className="p-4">
-                <div className='relative'>
-                    <Carousel value={photos} itemTemplate={itemTemplate} numVisible={1} numScroll={1} autoplayInterval={2050} />
-                    <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center z-10">
+            <div>
+                <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center z-100 mt-[30px] flex flex-wrap">
+                    <Navbar/>
+                </div>
+                <div className='relative' style={{ backgroundImage: 'url("sky.jpeg")' }}>
+                    <Carousel value={photos} itemTemplate={itemTemplate} numVisible={1} numScroll={1} autoplayInterval={2050} className='carousel-image'/>
+                    <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center z-10 ">
                         <h1 className="text-4xl font-bold mb-4 text-white">Discover the World</h1>
                         <h2 className="text-xl font-semibold mb-6 text-white">Your Ultimate Travel Companion</h2>
                         <p className="text-lg mb-4 text-white">

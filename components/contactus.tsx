@@ -1,8 +1,32 @@
-import React from 'react';
+'use client'
+import React, { useState } from 'react';
 import { Image } from 'primereact/image';
+import axios from 'axios';
 const ContactUs = () => {
+    const [formData, setFormData] = useState<any>({
+        name: "",
+        email: '',
+        date: '',
+        desc : ''
+    })
+    const handleChange = (e: any) => {
+        const { name, value } = e.target;
+        setFormData((prevData: any) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+    const handleSubmit = async () => {
+        formData.date = new Date().toLocaleDateString()
+        try {
+            await axios.post("/api/contact_us", formData);
+        } catch (error) {
+            console.error('Error sending email:', error);
+            // Handle error if needed
+        }
+    };
     return (
-        <div className="min-h-screen bg-gradient-to-b from-#d1e5e5-400 to-purple-500 flex flex-col md:flex-row justify-between items-center py-10" id="contact">
+        <div className="min-h-screen flex flex-col md:flex-row justify-between items-center py-10 bg-cyan-600 opticity-50" id="contact">
             <div className="md:w-1/2 md:flex flex-col justify-center items-center">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 rounded-lg p-8">
                     <h1 className="text-4xl font-bold text-black mb-4">Contact Us</h1>
@@ -32,16 +56,16 @@ const ContactUs = () => {
                         <form>
                             <div className="flex flex-col md:flex-row">
                                 <div className="md:w-1/2 mb-4 md:mr-2">
-                                    <input type="text" placeholder="Name" className="w-full p-3 border rounded-lg" />
+                                    <input type="text" value={formData.name} onChange={handleChange} id='name' name='name' placeholder="Name" className="w-full p-3 border rounded-lg" />
                                 </div>
                                 <div className="md:w-1/2 mb-4 md:ml-2">
-                                    <input type="email" placeholder="Email" className="w-full p-3 border rounded-lg" />
+                                    <input type="email" value={formData.email} onChange={handleChange} id='email' name='email' placeholder="Email" className="w-full p-3 border rounded-lg" />
                                 </div>
                             </div>
                             <div className="mb-4">
-                                <textarea placeholder="Message" className="w-full p-3 border rounded-lg"></textarea>
+                                <textarea placeholder="Message" value={formData.desc} onChange={handleChange} name='desc' className="w-full p-3 border rounded-lg"></textarea>
                             </div>
-                            <button type="submit" className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
+                            <button type="submit" onClick={()=> handleSubmit()} className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
                                 Send Message
                             </button>
                         </form>
