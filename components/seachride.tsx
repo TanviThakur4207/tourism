@@ -74,7 +74,7 @@ const SearchRide = () => {
                     Date:
                 </label>
                 <div className="card flex justify-content-center h-[50%]">
-                    <Calendar value={date} onChange={(e: CalendarChangeEvent) => setDate(e.value)} showIcon />
+                    <Calendar minDate={new Date()} value={date} onChange={(e: CalendarChangeEvent) => setDate(e.value)} showIcon />
                 </div>
             </div>
             <div className="mb-4">

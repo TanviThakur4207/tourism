@@ -17,6 +17,15 @@ const tourData = [
   {
     carName: 'Maruti K10'
   },
+  {
+    carName: 'Tempo Traveller 12 Seater'
+  },
+  {
+    carName: 'Maruti Swift Dzire'
+  },
+  {
+    carName: 'Maruti Eeco'
+  },
 ]
 
 export default tourData;

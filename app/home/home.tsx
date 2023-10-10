@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Carousel } from 'primereact/carousel';
 import { Image } from 'primereact/image';
 import AboutUs from '@/components/about';
@@ -13,7 +13,7 @@ interface Photo {
 }
 
 const Home = () => {
-
+    const [crousalTime, setCrousalTime] = useState<number>(2150);
     const [photos, setPhotos] = useState<Photo[]>([
         // Replace these URLs with your own image URLs
         { source: 'crousal_photos/photo1.jpg', alt: 'Image 1' },
@@ -33,6 +33,10 @@ const Home = () => {
             searchRideSection.scrollIntoView({ behavior: 'smooth' });
         }
     };
+
+    useEffect(() => {
+        setCrousalTime(2154)
+    }, []);
     return (
         <>
             <div>
@@ -40,7 +44,7 @@ const Home = () => {
                 <Navbar/>
                 {/* </div> */}
                 <div className='relative' style={{ backgroundImage: 'url("sky.jpeg")' }}>
-                    <Carousel value={photos} itemTemplate={itemTemplate} numVisible={1} numScroll={1} autoplayInterval={2155} className='carousel-image'/>
+                    <Carousel value={photos} itemTemplate={itemTemplate} numVisible={1} numScroll={1} autoplayInterval={crousalTime} className='carousel-image'/>
                     <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center z-10 text-center ">
                         <h1 className="text-4xl font-bold mb-4 text-white">Discover the World</h1>
                         <h2 className="text-xl font-semibold mb-6 text-white">Your Ultimate Travel Companion</h2>
