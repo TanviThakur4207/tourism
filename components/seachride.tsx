@@ -23,6 +23,10 @@ const SearchRide = () => {
     const [date, setDate] = useState<Date| any>(selectedDate ? new Date(Number(selectedDate)): new Date());
     const travelingDate =  date.getTime()
     const searchRides = async () => {
+        if (sourceValue.trim().length === 0) {alert("Please select correct Source !") ; return};
+        if (destinationValue.trim().length === 0) {alert("Please select correct Destination !"); return;}
+        if (!travelingDate) {alert("Please select correct Traveling Date !"); return;}
+        if (sourceValue.trim() === destinationValue.trim()) {alert("Source and Destination should not be the same !"); return;}
         router.push(`/rides?source=${sourceValue}&destination=${destinationValue}&date=${travelingDate}`)
     };
 

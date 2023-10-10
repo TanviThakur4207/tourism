@@ -56,14 +56,14 @@ const ContactUs = () => {
                         <form>
                             <div className="flex flex-col md:flex-row">
                                 <div className="md:w-1/2 mb-4 md:mr-2">
-                                    <input type="text" value={formData.name} onChange={handleChange} id='name' name='name' placeholder="Name" className="w-full p-3 border rounded-lg" />
+                                    <input type="text" value={formData.name} onChange={handleChange} id='name' name='name' placeholder="Name" className="w-full p-3 border rounded-lg" required/>
                                 </div>
                                 <div className="md:w-1/2 mb-4 md:ml-2">
-                                    <input type="email" value={formData.email} onChange={handleChange} id='email' name='email' placeholder="Email" className="w-full p-3 border rounded-lg" />
+                                    <input type="email" value={formData.email} onChange={handleChange} id='email' name='email' placeholder="Email" className="w-full p-3 border rounded-lg" required/>
                                 </div>
                             </div>
                             <div className="mb-4">
-                                <textarea placeholder="Message" value={formData.desc} onChange={handleChange} name='desc' className="w-full p-3 border rounded-lg"></textarea>
+                                <textarea placeholder="Message" value={formData.desc} onChange={handleChange} name='desc' className="w-full p-3 border rounded-lg" required></textarea>
                             </div>
                             <button type="submit" onClick={()=> handleSubmit()} className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
                                 Send Message
