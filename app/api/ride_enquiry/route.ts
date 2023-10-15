@@ -7,6 +7,7 @@ interface Data {
     source: string;
     destination: string;
     date: string;
+    requestedVehicle : string;
 }
 
 export const POST = async (request: NextRequest) => {
@@ -22,6 +23,7 @@ export const POST = async (request: NextRequest) => {
   - Date: ${rideDetails.date}
   - Pickup Location: ${rideDetails.source}
   - Destination: ${rideDetails.destination}
+  - Requested Vehicle : ${rideDetails.requestedVehicle}
   - Special Requests: ${rideDetails.desc}
   
   I would appreciate it if you could provide me with more information about the availability, pricing, and any other relevant details for the ride on the specified date and time.
