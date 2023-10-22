@@ -31,7 +31,7 @@ const ContactUs = () => {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 rounded-lg p-8">
                     <h1 className="text-4xl font-bold text-black mb-4">Contact Us</h1>
                     <p className="text-black text-lg mb-6">
-                        Thank you for your interest in Trips In Himachal Car Rides. If you have any questions or inquiries, please feel free to get in touch with us using the contact details below.
+                        Thank you for your interest in Trips In Himachal . If you have any questions or inquiries, please feel free to get in touch with us using the contact details below.
                     </p>
                     <div className="flex flex-col md:flex-row">
                         <div className="md:w-1/2">
