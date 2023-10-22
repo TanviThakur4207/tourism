@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import "primereact/resources/themes/lara-light-indigo/theme.css";     
 import "primereact/resources/primereact.min.css";                                       
 const inter = Inter({ subsets: ['latin'] })
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
   title: 'Trips In Himachal',
@@ -21,7 +22,9 @@ export default function RootLayout({
         <link rel="icon" href="https://w7.pngwing.com/pngs/913/860/png-transparent-green-mountain-with-trees-illustration-flat-design-landscape-mountain-forest-mountain-cloud-computer-wallpaper-white-clouds-thumbnail.png" type="image/x-icon" sizes="any"/>
       </head>
       <body className={inter.className}>
-        {children}</body>
+        {children}
+        <Analytics />
+        </body>
     </html>
   )
 }
