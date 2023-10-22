@@ -66,7 +66,7 @@ const ContactUs = () => {
                                 <textarea placeholder="Message" value={formData.desc} onChange={handleChange} name='desc' className="w-full p-3 border rounded-lg" required></textarea>
                             </div>
                             <button type="submit" onClick={()=> handleSubmit()} className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
-                                Send Message
+                                Send Message 
                             </button>
                         </form>
                     </div>
