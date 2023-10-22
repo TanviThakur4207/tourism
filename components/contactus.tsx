@@ -31,23 +31,23 @@ const ContactUs = () => {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 rounded-lg p-8">
                     <h1 className="text-4xl font-bold text-black mb-4">Contact Us</h1>
                     <p className="text-black text-lg mb-6">
-                        Thank you for your interest in Himalayan Tourist Car Rides. If you have any questions or inquiries, please feel free to get in touch with us using the contact details below.
+                        Thank you for your interest in Trips In Himachal Car Rides. If you have any questions or inquiries, please feel free to get in touch with us using the contact details below.
                     </p>
                     <div className="flex flex-col md:flex-row">
                         <div className="md:w-1/2">
                             <h2 className="text-2xl font-bold text-black mb-2">Address:</h2>
                             <p className="text-black text-lg mb-4">
-                                123 Main Street,
+                                Ramu Niwash Chalaunthi,
                                 <br />
-                                Kathmandu, Nepal
+                                Sanjauli, Shimla Himachal Pradesh (171006)
                             </p>
                         </div>
                         <div className="md:w-1/2">
                             <h2 className="text-2xl font-bold text-black mb-2">Contact Information:</h2>
                             <p className="text-black text-lg mb-4">
-                                Email: info@himalayantouristcarrides.com
+                                Email: tripsinhimachalinfo@gmail.com
                                 <br />
-                                Phone: +977-123-456-7890
+                                Phone: +917018114207
                             </p>
                         </div>
                     </div>
@@ -66,7 +66,7 @@ const ContactUs = () => {
                                 <textarea placeholder="Message" value={formData.desc} onChange={handleChange} name='desc' className="w-full p-3 border rounded-lg" required></textarea>
                             </div>
                             <button type="submit" onClick={()=> handleSubmit()} className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
-                                Send Message
+                                Send Message 
                             </button>
                         </form>
                     </div>
