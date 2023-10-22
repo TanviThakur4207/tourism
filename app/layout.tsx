@@ -9,6 +9,7 @@ import { Analytics } from '@vercel/analytics/react';
 export const metadata: Metadata = {
   title: 'Trips In Himachal',
   description: 'Tour and Travels business in himachal',
+  keywords : 'trips in himachal, shimla himachal pradesh',
 }
 
 export default function RootLayout({
