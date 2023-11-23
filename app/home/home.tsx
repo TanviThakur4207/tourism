@@ -102,7 +102,7 @@ const Home = () => {
                             Explore Now
                         </button>
 
-                        <div className={`pb-2 bg-slate-800 opacity-80 rounded-lg ${isPhoneScreen ? "mt-[2rem]" : "mt-[12rem]"} `}>
+                        <div className={`pb-2 bg-slate-800 bg-opacity-50 rounded-lg ${isPhoneScreen ? "mt-[2rem]" : "mt-[12rem]"} `}>
                             <div className={`flex gap-4 ${isSearchRide ? "bg-blue-500" : "bg-neutral-500"} w-[20%] rounded-full mt-[-8px] ml-[-8px]`}>
                                 <div className={`${isSearchRide ? "bg-neutral-500" : "bg-blue-500"} p-[8px] rounded-full cursor-pointer font-medium`} onClick={() => handleToggleForm()}>
                                     Rapid Enquiry
@@ -121,6 +121,7 @@ const Home = () => {
                                         type="text"
                                         id="name"
                                         name="name"
+                                        placeholder='Enter Your name'
                                         value={formData.name}
                                         onChange={handleChange}
                                         className="border rounded-md py-2 px-3 w-full"
@@ -135,9 +136,10 @@ const Home = () => {
                                         type="tel"
                                         id="phoneNumber"
                                         name="phoneNumber"
+                                        placeholder='Enter Your Number'
                                         value={formData.phoneNumber}
                                         onChange={handleChange}
-                                        className="border rounded-md py-2 px-3 w-full"
+                                        className="border rounded-md py-2 px-3 w-full "
                                         required
                                     />
                                 </div>
@@ -149,6 +151,7 @@ const Home = () => {
                                         type="email"
                                         id="email"
                                         name="email"
+                                        placeholder='Enter Your Email'
                                         value={formData.email}
                                         onChange={handleChange}
                                         className="border rounded-md py-2 px-3 w-full"
@@ -165,6 +168,7 @@ const Home = () => {
                                         type="text"
                                         id="city"
                                         name="city"
+                                        placeholder='Enter Your City'
                                         value={formData.city}
                                         onChange={handleChange}
                                         className="border rounded-md py-2 px-3 w-full"
@@ -178,6 +182,7 @@ const Home = () => {
                                         type="text"
                                         id="requirement"
                                         name="requirement"
+                                        placeholder='Enter Your Requirement'
                                         value={formData.requirement}
                                         onChange={handleChange}
                                         className="border rounded-md py-2 px-3 w-full"
