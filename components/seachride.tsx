@@ -52,10 +52,10 @@ const SearchRide = () => {
     }
 
     return (
-        <div className="p-4 flex flex-wrap justify-center gap-2 shadow-md" id="search_ride" style={{ backgroundImage: 'url("sky.jpeg")' }}>
+        <div className={`p-4 flex flex-wrap justify-center gap-2 shadow-md `} id="search_ride">
             <div className="mb-4">
                 <label htmlFor="from" className="block text-white font-bold mb-2">
-                    From:
+                    From:*
                 </label>
                 <div className="card flex justify-content-center">
                     <AutoComplete placeholder="Address" value={sourceValue} suggestions={sourceItems} completeMethod={sourceSearch} onChange={(e) => setSourceValue(e.value)} className='h-[41px]'/>
@@ -63,7 +63,7 @@ const SearchRide = () => {
             </div>
             <div className="mb-4">
                 <label htmlFor="to" className="block text-white font-bold mb-2">
-                    To:
+                    To:*
                 </label>
                 <div className="card flex justify-content-center">
                     <AutoComplete placeholder="Address" value={destinationValue} suggestions={destinationItems} completeMethod={destinationSearch} onChange={(e) => setDestinationValue(e.value)} className='h-[41px]' />
@@ -71,7 +71,7 @@ const SearchRide = () => {
             </div>
             <div className="mb-4">
                 <label htmlFor="date" className="block text-white font-bold mb-2">
-                    Date:
+                    Date:*
                 </label>
                 <div className="card flex justify-content-center h-[50%]">
                     <Calendar minDate={new Date()} value={date} onChange={(e: CalendarChangeEvent) => setDate(e.value)} showIcon />
